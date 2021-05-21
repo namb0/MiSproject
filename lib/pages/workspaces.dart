@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class History extends StatefulWidget {
+class Workspaces extends StatefulWidget {
   @override
-  _HistoryState createState() => _HistoryState();
+  _WorkspacesState createState() => _WorkspacesState();
 }
 
-class _HistoryState extends State<History> {
-  int _currentIndex = 1;
+class _WorkspacesState extends State<Workspaces> {
+  int _currentIndex = 2;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal.shade500,
-        title: Text('History'),
+        title: Text('Workspaces'),
       ),
       drawer: Drawer(
         child: ListView(
@@ -49,7 +49,7 @@ class _HistoryState extends State<History> {
           ],
         ),
       ),
-      body: Text('history widget'),
+      body: Text('workspaces widget'),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
@@ -59,8 +59,7 @@ class _HistoryState extends State<History> {
           BottomNavigationBarItem(
               icon: Icon(Icons.qr_code_scanner), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home_work), label: 'Workspaces'),
+          BottomNavigationBarItem(icon: Icon(Icons.home_work), label: 'Workspaces'),
           BottomNavigationBarItem(
               icon: Icon(Icons.edit), label: 'Certificates'),
         ],
