@@ -85,7 +85,9 @@ class _LoginState extends State<Login> {
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 8),
                   child: ElevatedButton(
                     child: Text('Login'),
-                    onPressed: login(usercontroller.text,pwcontroller.text),
+                    onPressed: (){
+                    login(usercontroller.text,pwcontroller.text);
+                    },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.resolveWith<Color>(
                         (Set<MaterialState> states) {
