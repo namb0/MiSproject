@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:certificate_app/data/login.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -6,15 +7,25 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  void login() {
+
+  var usercontroller = TextEditingController();
+  var pwcontroller = TextEditingController();
+
+ 
+  void login(String username, String pw) {
    
-    print('logged in!');
+   Logindatacheck userData = Logindatacheck(username, pw);
+    
+    userData.loginUser(context);
+   
+   //return 0;
   }
 
   void pwfg() {
     print('i forgot my password');
   }
 
+ 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,13 +35,15 @@ class _LoginState extends State<Login> {
           children: [
             Container(
               child: Padding(
-                padding: EdgeInsets.only(bottom: 40,top: 100),
+                padding: EdgeInsets.only(bottom: 40, top: 100),
                 child: Text(
                   'Luca QR Certification App',
                   style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      color: Colors.teal.shade500,
-                      fontSize: 25),
+                    fontStyle: FontStyle.italic,
+                    color: Colors.teal.shade500,
+                    fontSize: 25,
+                    fontFamily: 'Roboto-Medium',
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -38,23 +51,31 @@ class _LoginState extends State<Login> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
               child: TextFormField(
+                controller: usercontroller,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Username',
-                  //hoverColor: Colors.teal.shade500,
-                  //focusColor: Colors.teal.shade500,
-                  //fillColor: Colors.teal.shade500,
-                  
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
+                    borderSide:
+                        BorderSide(width: 1, color: Colors.teal.shade500),
+                  ),
                 ),
               ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
               child: TextFormField(
+                controller: pwcontroller,
                 obscureText: true,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Password',
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
+                    borderSide:
+                        BorderSide(width: 1, color: Colors.teal.shade500),
+                  ),
                 ),
               ),
             ),
@@ -64,7 +85,7 @@ class _LoginState extends State<Login> {
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 8),
                   child: ElevatedButton(
                     child: Text('Login'),
-                    onPressed: login,
+                    onPressed: login(usercontroller.text,pwcontroller.text),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.resolveWith<Color>(
                         (Set<MaterialState> states) {
@@ -73,7 +94,8 @@ class _LoginState extends State<Login> {
                                 .colorScheme
                                 .primary
                                 .withOpacity(0.5);
-                          return Colors.teal.shade500; // Use the component's default.
+                          return Colors
+                              .teal.shade500; // Use the component's default.
                         },
                       ),
                     ),
