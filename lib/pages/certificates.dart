@@ -6,7 +6,6 @@ class Certificates extends StatefulWidget {
 }
 
 class _CertificatesState extends State<Certificates> {
-
   int _currentIndex = 2;
   String route = '/certificates';
 
@@ -17,15 +16,28 @@ class _CertificatesState extends State<Certificates> {
         backgroundColor: Colors.teal.shade500,
         title: Text('Certificates'),
       ),
-      body: Text('certificates widget'),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: ElevatedButton(
+              onPressed: null,
+              child: null,
+            ),
+          ),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         backgroundColor: Colors.teal.shade500,
         selectedItemColor: Colors.white,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.qr_code_scanner), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.qr_code_scanner), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
-          BottomNavigationBarItem(icon: Icon(Icons.edit), label: 'Certificates'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.edit), label: 'Certificates'),
         ],
         onTap: (index) {
           setState(() {

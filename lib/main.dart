@@ -6,9 +6,10 @@ import 'package:certificate_app/pages/login.dart';
 
 void main() {
   runApp(MaterialApp(
-    initialRoute: '/home',
+    debugShowCheckedModeBanner: false,
+    initialRoute: '/login',
     routes: {
-      '/': (context) => Login(),
+      '/login': (context) => Login(),
       '/home': (context) => Home(),
       '/history': (context) => History(),
       '/certificates': (context) => Certificates(),
