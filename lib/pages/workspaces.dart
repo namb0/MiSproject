@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:certificate_app/data/workspace.dart';
 
 class Workspaces extends StatefulWidget {
   @override
@@ -7,6 +9,49 @@ class Workspaces extends StatefulWidget {
 
 class _WorkspacesState extends State<Workspaces> {
   int _currentIndex = 2;
+
+  List<Workspace> workspacesList = [
+    Workspace(
+        bldInformation: 'C101',
+        workspaceName: 'IT Workspace',
+        workspaceResponsible: 'Max Musterresponsible'),
+    Workspace(
+        bldInformation: 'C102',
+        workspaceName: 'Chemistry Workspace',
+        workspaceResponsible: 'Max Musterresponsible'),
+    Workspace(
+        bldInformation: 'C103',
+        workspaceName: 'Biology Workspace',
+        workspaceResponsible: 'Max Musterresponsible'),
+  ];
+
+  Widget workspaceCard(Workspace workspace) {
+    return Card(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          ListTile(
+            leading: Text(workspace.bldInformation),
+            title: Text(workspace.workspaceName),
+            subtitle: Text(workspace.workspaceResponsible),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              const SizedBox(width: 8),
+              TextButton(
+                child: const Text('SHOW MACHINES'),
+                onPressed: () {
+                  /* ... */
+                },
+              ),
+              const SizedBox(width: 8),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +94,10 @@ class _WorkspacesState extends State<Workspaces> {
           ],
         ),
       ),
-      body: Text('workspaces widget'),
+      body: Column(
+        children:
+            workspacesList.map((workspace) => workspaceCard(workspace)).toList(),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
@@ -59,7 +107,8 @@ class _WorkspacesState extends State<Workspaces> {
           BottomNavigationBarItem(
               icon: Icon(Icons.qr_code_scanner), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
-          BottomNavigationBarItem(icon: Icon(Icons.home_work), label: 'Workspaces'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home_work), label: 'Workspaces'),
           BottomNavigationBarItem(
               icon: Icon(Icons.edit), label: 'Certificates'),
         ],

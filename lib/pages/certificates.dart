@@ -56,8 +56,21 @@ class _CertificatesState extends State<Certificates> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              ElevatedButton(onPressed: () {}, child: Text('Workspaces')),
-              ElevatedButton(onPressed: () {}, child: Text('Machines')),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Workspaces'),
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.grey.shade200,
+                    onPrimary: Colors.black,
+                    minimumSize: Size(200, 100)),
+              ),
+              ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Machines'),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.grey.shade200,
+                      onPrimary: Colors.black,
+                      minimumSize: Size(200, 100))),
             ],
           ),
         ),
@@ -71,7 +84,8 @@ class _CertificatesState extends State<Certificates> {
           BottomNavigationBarItem(
               icon: Icon(Icons.qr_code_scanner), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
-          BottomNavigationBarItem(icon: Icon(Icons.home_work), label: 'Workspaces'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home_work), label: 'Workspaces'),
           BottomNavigationBarItem(
               icon: Icon(Icons.edit), label: 'Certificates'),
         ],
