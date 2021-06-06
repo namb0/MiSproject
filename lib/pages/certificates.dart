@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:certificate_app/helper/drawer.dart';
 
 class Certificates extends StatefulWidget {
   @override
@@ -15,40 +16,7 @@ class _CertificatesState extends State<Certificates> {
         backgroundColor: Colors.teal.shade500,
         title: Text('Certificates'),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.teal.shade500,
-              ),
-              child: Text(
-                'LUCA \nQR Certification App',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-            ),
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Sign Out'),
-              onTap: () {
-                Navigator.pushReplacementNamed(context, '/login');
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: drawerWidget(),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 50.0),

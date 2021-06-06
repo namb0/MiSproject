@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:certificate_app/helper/drawer.dart';
 
 class History extends StatefulWidget {
   @override
@@ -15,41 +16,18 @@ class _HistoryState extends State<History> {
         backgroundColor: Colors.teal.shade500,
         title: Text('History'),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.teal.shade500,
-              ),
-              child: Text(
-                'LUCA \nQR Certification App',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-            ),
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Sign Out'),
-              onTap: () {
-                Navigator.pushReplacementNamed(context, '/login');
-              },
+      drawer: drawerWidget(),
+      body: Container(
+        padding: EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Text(
+              'List of recently scanned QR codes',
+              style: TextStyle(fontSize: 16.0),
             ),
           ],
         ),
       ),
-      body: Text('history widget'),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,

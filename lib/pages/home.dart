@@ -1,7 +1,6 @@
 import 'package:certificate_app/helper/qr_scanner.dart';
 import 'package:flutter/material.dart';
-import 'package:certificate_app/helper/qr_scanner.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:certificate_app/helper/drawer.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -18,40 +17,7 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.teal.shade500,
         title: Text('Home'),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.teal.shade500,
-              ),
-              child: Text(
-                'LUCA \nQR Certification App',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-            ),
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Sign Out'),
-              onTap: () {
-                Navigator.pushReplacementNamed(context, '/login');
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: drawerWidget(),
       body: QRViewExample(),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
