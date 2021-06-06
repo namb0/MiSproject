@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:certificate_app/data/workspace.dart';
+import 'package:certificate_app/helper/drawer.dart';
 
 class Workspaces extends StatefulWidget {
   @override
@@ -42,7 +43,7 @@ class _WorkspacesState extends State<Workspaces> {
               TextButton(
                 child: const Text('SHOW MACHINES'),
                 onPressed: () {
-                  /* ... */
+                  Navigator.pushReplacementNamed(context, '/machines');
                 },
               ),
               const SizedBox(width: 8),
@@ -60,43 +61,11 @@ class _WorkspacesState extends State<Workspaces> {
         backgroundColor: Colors.teal.shade500,
         title: Text('Workspaces'),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.teal.shade500,
-              ),
-              child: Text(
-                'LUCA \nQR Certification App',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-            ),
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Sign Out'),
-              onTap: () {
-                Navigator.pushReplacementNamed(context, '/login');
-              },
-            ),
-          ],
-        ),
-      ),
-      body: Column(
-        children:
-            workspacesList.map((workspace) => workspaceCard(workspace)).toList(),
+      drawer: drawerWidget(),
+      body: ListView(
+        children: workspacesList
+            .map((workspace) => workspaceCard(workspace))
+            .toList(),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

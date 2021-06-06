@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Workspace {
-  String bldInformation;
-  String workspaceName;
-  String workspaceResponsible;
+  String bldInformation, workspaceName, workspaceResponsible;
 
   Workspace(
       {required this.bldInformation,
