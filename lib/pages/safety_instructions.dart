@@ -86,15 +86,18 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
         Container(
           padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
           alignment: Alignment.center,
-          child: FutureBuilder<Widget>(
-            future: getImage(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return snapshot.data!;
-              } else {
-                return Text('LOADING...');
-              }
-            },
+          child: InteractiveViewer(
+            clipBehavior: Clip.none,
+            child: FutureBuilder<Widget>(
+              future: getImage(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return snapshot.data!;
+                } else {
+                  return Text('LOADING...');
+                }
+              },
+            ),
           ),
         ),
       ],
