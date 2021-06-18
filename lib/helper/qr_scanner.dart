@@ -41,7 +41,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                   if (result != null)
                     Text(
                         'Barcode Type: ${describeEnum(
-                            result!.format)}   Data: ${result!.code}')
+                            result!.format)}   Data: ${result!.code}')  
                   else
                     Text('Scan a code'),
                 ],
