@@ -19,7 +19,27 @@ To use the app, configure a emulated device or connect your Android phone to the
 
 *Required Plugins*: 
 - Flutter  
-- Dart
-#  
+- Dart  
 
-Further documentation is found at -->
+# Important Files and Folders  
+
+**lib**:  Main folder which includes most of the app.    
+**data**:   Inlcudes most of the logic and data used in the pages.  
+**helper**:   Inlcludes helping functions such as qr scanner and navbar.  
+**pages**:    Inlcudes all the pages used in shown when using the application.  
+
+# Using the app
+
+**Login Screen**  
+![grafik](https://user-images.githubusercontent.com/70316076/122654393-51cbdf80-d14b-11eb-8e7f-c99a9261881b.png)
+aosihfopi<fhjgfoi üasjkf oüpasfj  apo djapofda
+
+
+
+![grafik](https://user-images.githubusercontent.com/70316076/122654357-fe599180-d14a-11eb-9b0f-ce10df15051e.png)
+![grafik](https://user-images.githubusercontent.com/70316076/122654363-103b3480-d14b-11eb-8c05-3fb9fa1ba8b0.png)
+![grafik](https://user-images.githubusercontent.com/70316076/122654364-1af5c980-d14b-11eb-97bc-a382280c2ee6.png)
+![grafik](https://user-images.githubusercontent.com/70316076/122654370-29dc7c00-d14b-11eb-93e6-7e92e8e43ae9.png)
+![grafik](https://user-images.githubusercontent.com/70316076/122654381-34971100-d14b-11eb-849f-dd5606f6200b.png)
+
+
