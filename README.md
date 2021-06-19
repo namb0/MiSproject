@@ -30,32 +30,18 @@ To use the app, configure a emulated device or connect your Android phone to the
 
 # Using the app
 
-|**Login Screen** |
-| --------------- |
+|**Login Screen** | Description |
+| --------------- | ----------- |
 | <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654393-51cbdf80-d14b-11eb-8e7f-c99a9261881b.png"> | This is a simple login screen. The user can log on with his R-Number and the Base64 code he will receive when selecting the "Register here" button. |  
-
-
-| **Home Screen** |
-| --------------- |
-| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654357-fe599180-d14a-11eb-9b0f-ce10df15051e.png"> |  
-
-| **History** |
-| ------------------ |
+| **Home Screen** |             |
+| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654357-fe599180-d14a-11eb-9b0f-ce10df15051e.png"> | On the Homescreen the user is instantly able to Scan a QR code or use the navbar on the bottom to direct to another page |
+| **History**     |             |              
 | <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654363-103b3480-d14b-11eb-8c05-3fb9fa1ba8b0.png"> |  
-
-
-| **Workspaces** |
-| ------------------ |
+| **Workspaces**  |             |
 | <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654364-1af5c980-d14b-11eb-97bc-a382280c2ee6.png"> |  
-
-
-| **Machines** |
-| ------------------ |
+| **Machines**    |             |
 | <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654370-29dc7c00-d14b-11eb-93e6-7e92e8e43ae9.png"> |  
-
-
-| **Sidebar** |
-| ------------------ |
+| **Sidebar**     |             |
 | <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654381-34971100-d14b-11eb-849f-dd5606f6200b.png"> |  
 
 
