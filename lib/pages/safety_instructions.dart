@@ -15,14 +15,17 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
 
   List<Machine> machinesList = [
     Machine(
+        machineId: '1',
         machineName: 'Drucker',
         workspaceName: 'IT Workspace',
         certificateGranted: true),
     Machine(
+        machineId: '2',
         machineName: 'C102',
         workspaceName: 'Chemistry Workspace',
         certificateGranted: true),
     Machine(
+        machineId: '3',
         machineName: 'C103',
         workspaceName: 'Biology Workspace',
         certificateGranted: false),
@@ -50,7 +53,7 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
     return completer.future;
   }
 
-  Widget machineCard(Machine machine) {
+  Widget informationCard(Machine machine) {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
@@ -113,7 +116,7 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
       ),
       drawer: drawerWidget(),
       body: Container(
-        child: machineCard(machinesList.elementAt(2)),
+        child: informationCard(machinesList.elementAt(2)),
       ),
       bottomNavigationBar: bottomNavBar(currentIndex: _currentIndex),
     );

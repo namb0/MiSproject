@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:certificate_app/data/workspace.dart';
 import 'package:certificate_app/helper/drawer.dart';
 import 'package:certificate_app/helper/bottom_navbar.dart';
+import 'package:certificate_app/helper/api_requests.dart';
+import 'package:string_validator/string_validator.dart';
 
 class Workspaces extends StatefulWidget {
   @override
@@ -12,6 +13,17 @@ class Workspaces extends StatefulWidget {
 class _WorkspacesState extends State<Workspaces> {
   int _currentIndex = 2;
 
+  List<Workspace> _workspaces = [];
+
+  Future fetchWorkspaces() async {
+    ApiRequests().getWorkplacesList().then((value) {
+      setState(() {
+        _workspaces.addAll(value);
+      });
+    });
+  }
+
+/*
   List<Workspace> workspacesList = [
     Workspace(
         bldInformation: 'C101',
@@ -25,7 +37,7 @@ class _WorkspacesState extends State<Workspaces> {
         bldInformation: 'C103',
         workspaceName: 'Biology Workspace',
         workspaceResponsible: 'Max Musterresponsible'),
-  ];
+  ];*/
 
   Widget workspaceCard(Workspace workspace) {
     return Card(
@@ -44,7 +56,8 @@ class _WorkspacesState extends State<Workspaces> {
               TextButton(
                 child: const Text('SHOW MACHINES'),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/machines');
+                  Navigator.pushNamed(context, '/machines',
+                      arguments: Workspace(workspace.id, workspace.bldInformation, workspace.workspaceName, workspace.workspaceResponsible));
                 },
               ),
               const SizedBox(width: 8),
@@ -56,6 +69,12 @@ class _WorkspacesState extends State<Workspaces> {
   }
 
   @override
+  void initState() {
+    fetchWorkspaces();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -64,9 +83,8 @@ class _WorkspacesState extends State<Workspaces> {
       ),
       drawer: drawerWidget(),
       body: ListView(
-        children: workspacesList
-            .map((workspace) => workspaceCard(workspace))
-            .toList(),
+        children:
+            _workspaces.map((workspace) => workspaceCard(workspace)).toList(),
       ),
       bottomNavigationBar: bottomNavBar(currentIndex: _currentIndex),
     );
