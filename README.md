@@ -23,32 +23,40 @@ To use the app, configure a emulated device or connect your Android phone to the
 
 # Important Files and Folders  
 
-**lib**:  Main folder which includes most of the app.    
+**lib**:    Main folder which includes most of the app.    
 **data**:   Inlcudes most of the logic and data used in the pages.  
-**helper**:   Inlcludes helping functions such as qr scanner and navbar.  
-**pages**:    Inlcudes all the pages used in shown when using the application.  
+**helper**: Inlcludes helping functions such as qr scanner and navbar.  
+**pages**:  Inlcudes all the pages used in shown when using the application.  
 
 # Using the app
 
-**Login Screen**  
-
-<img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654393-51cbdf80-d14b-11eb-8e7f-c99a9261881b.png">  
-  
-This is a simple login screen.  
-  
-   
-The user can log on with his R-Number and the Base64 code he will receive when selecting the "Register here" button.
+|**Login Screen** |
+| --------------- |
+| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654393-51cbdf80-d14b-11eb-8e7f-c99a9261881b.png"> | This is a simple login screen. The user can log on with his R-Number and the Base64 code he will receive when selecting the "Register here" button. |  
 
 
-<img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654357-fe599180-d14a-11eb-9b0f-ce10df15051e.png">  
+| **Home Screen** |
+| --------------- |
+| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654357-fe599180-d14a-11eb-9b0f-ce10df15051e.png"> |  
 
-<img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654363-103b3480-d14b-11eb-8c05-3fb9fa1ba8b0.png">  
+| **History** |
+| ------------------ |
+| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654363-103b3480-d14b-11eb-8c05-3fb9fa1ba8b0.png"> |  
 
-<img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654364-1af5c980-d14b-11eb-97bc-a382280c2ee6.png">  
 
-<img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654370-29dc7c00-d14b-11eb-93e6-7e92e8e43ae9.png">  
+| **Workspaces** |
+| ------------------ |
+| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654364-1af5c980-d14b-11eb-97bc-a382280c2ee6.png"> |  
 
-<img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654381-34971100-d14b-11eb-849f-dd5606f6200b.png">  
+
+| **Machines** |
+| ------------------ |
+| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654370-29dc7c00-d14b-11eb-93e6-7e92e8e43ae9.png"> |  
+
+
+| **Sidebar** |
+| ------------------ |
+| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654381-34971100-d14b-11eb-849f-dd5606f6200b.png"> |  
 
 
 
