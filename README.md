@@ -24,9 +24,9 @@ To use the app, configure a emulated device or connect your Android phone to the
 # Important Files and Folders  
 
 **lib**:    Main folder which includes most of the app.    
-**data**:   Inlcudes most of the logic and data used in the pages.  
-**helper**: Inlcludes helping functions such as qr scanner and navbar.  
-**pages**:  Inlcudes all the pages used in shown when using the application.  
+**data**:   Includes most of the logic and data used in the pages.  
+**helper**: Includes helping functions such as qr scanner and navbar.  
+**pages**:  Includes all the pages used in shown when using the application.  
 
 # Using the app
 
