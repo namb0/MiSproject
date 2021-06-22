@@ -1,9 +1,14 @@
+import 'package:certificate_app/data/certificate.dart';
+import 'package:certificate_app/data/workspace.dart';
+import 'package:certificate_app/helper/api_requests.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:certificate_app/data/machine.dart';
 import 'package:certificate_app/helper/drawer.dart';
 import 'package:certificate_app/helper/bottom_navbar.dart';
 import 'dart:async';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SafetyInstructions extends StatefulWidget {
   @override
@@ -12,17 +17,32 @@ class SafetyInstructions extends StatefulWidget {
 
 class _SafetyInstructionsState extends State<SafetyInstructions> {
   int _currentIndex = 2;
-  Machine machine = Machine.full('', '', '', '', '', false);
+  List<Certificate> _certificates = [];
+  Workspace ws = Workspace('', '', '', '');
+  Machine machine = Machine.full('','', '', '', '', '', false);
 
   Future fetchMachine() async {
-    final args = ModalRoute.of(context)!.settings.arguments as Machine;
-    machine = Machine.full(
-        args.machineId,
-        args.machineName,
-        args.workspaceName,
-        args.picture,
-        args.safetyInstructions,
-        args.certificateGranted);
+    final args = ModalRoute.of(context)!.settings.arguments as Map;
+    int workplaceId = args['workplaceId'];
+    int machineId = args['machineId'];
+    ws = await ApiRequests().getWorkplace(workplaceId);
+    machine = await ApiRequests().getMachine(workplaceId, machineId);
+    await ApiRequests().getCertificates(await getStudentNumber()).then((value) {
+      setState(() {
+        _certificates.addAll(value);
+      });
+    });
+    for (int i = 0; i < _certificates.length; i++) {
+      if (_certificates.elementAt(i).machineId == machine.certificateId) {
+        machine.certificateGranted = true;
+      }
+    }
+  }
+
+  Future<String> getStudentNumber() async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    var sharedPrefstudentNumber = sharedPreferences.getString('student number');
+    return sharedPrefstudentNumber!;
   }
 
   Future<Widget> getImage() async {
@@ -33,8 +53,8 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
     final load = image.resolve(const ImageConfiguration());
 
     final listener = new ImageStreamListener((ImageInfo info, isSync) async {
-      print(info.image.width);
-      print(info.image.height);
+      //print(info.image.width);
+      //print(info.image.height);
 
       if (info.image.width == 80 && info.image.height == 160) {
         completer.complete(Container(child: Text('AZAZA')));
@@ -53,7 +73,7 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
       children: <Widget>[
         ListTile(
           title: Text(machine.machineName),
-          subtitle: Text(machine.workspaceName),
+          subtitle: Text(ws.workspaceName),
         ),
         Container(
           padding: EdgeInsets.fromLTRB(16.0, 0.0, 0.0, 16.0),
@@ -112,7 +132,6 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
 
   @override
   Widget build(BuildContext context) {
-    fetchMachine();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal.shade500,
