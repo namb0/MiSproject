@@ -25,7 +25,8 @@ class _MachinesState extends State<Machines> {
 
   Future fetchMachines() async {
     final args = ModalRoute.of(context)!.settings.arguments as Workspace;
-    ws = Workspace(args.id, args.bldInformation, args.workspaceName, args.workspaceResponsible);
+    ws = Workspace(args.id, args.bldInformation, args.workspaceName,
+        args.workspaceResponsible);
     await ApiRequests().getMachinesList(int.parse(args.id)).then((value) {
       setState(() {
         _machines.addAll(value);
@@ -157,7 +158,14 @@ class _MachinesState extends State<Machines> {
               TextButton(
                 child: const Text('SAFETY INSTRUCTIONS'),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/safety_instructions');
+                  Navigator.pushNamed(context, '/safety_instructions',
+                      arguments: Machine.full(
+                          machine.machineId,
+                          machine.machineName,
+                          ws.workspaceName,
+                          machine.picture,
+                          machine.safetyInstructions,
+                          machine.certificateGranted));
                 },
               ),
               const SizedBox(width: 8),

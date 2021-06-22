@@ -51,9 +51,27 @@ class ApiRequests {
     return machineList;
   }
 
-  Future<Workspace> getWorkspace(id) async {
+  Future<Workspace> getWorkplace(id) async {
     var url = Uri.parse(
         'https://firestore.googleapis.com/v1/projects/certificate-app-8bce0/databases/(default)/documents/Workplaces/$id');
+    var response = await get(url);
+
+    if (response.statusCode == 200) {
+      var workplace = json.decode(response.body);
+      return Workspace.fromJson(workplace['fields']);
+    }
+
+    return Workspace(
+      'N/A',
+      'N/A',
+      'N/A',
+      'N/A',
+    );
+  }
+
+  Future<Workspace> getMachine(workplaceId, machineId) async {
+    var url = Uri.parse(
+        'https://firestore.googleapis.com/v1/projects/certificate-app-8bce0/databases/(default)/documents/Workplaces/$workplaceId/Machines/$machineId');
     var response = await get(url);
 
     if (response.statusCode == 200) {

@@ -12,28 +12,22 @@ class SafetyInstructions extends StatefulWidget {
 
 class _SafetyInstructionsState extends State<SafetyInstructions> {
   int _currentIndex = 2;
+  Machine machine = Machine.full('', '', '', '', '', false);
 
-  List<Machine> machinesList = [
-    Machine(
-        machineId: '1',
-        machineName: 'Drucker',
-        workspaceName: 'IT Workspace',
-        certificateGranted: true),
-    Machine(
-        machineId: '2',
-        machineName: 'C102',
-        workspaceName: 'Chemistry Workspace',
-        certificateGranted: true),
-    Machine(
-        machineId: '3',
-        machineName: 'C103',
-        workspaceName: 'Biology Workspace',
-        certificateGranted: false),
-  ];
+  Future fetchMachine() async {
+    final args = ModalRoute.of(context)!.settings.arguments as Machine;
+    machine = Machine.full(
+        args.machineId,
+        args.machineName,
+        args.workspaceName,
+        args.picture,
+        args.safetyInstructions,
+        args.certificateGranted);
+  }
 
   Future<Widget> getImage() async {
     final Completer<Widget> completer = Completer();
-    final url = 'https://www.rugdoctor.co.uk/wp-content/uploads/2019/04/Rug-Doctor-Safety-Infographic.png';
+    final url = machine.safetyInstructions;
     final image = NetworkImage(url);
     // final config = await image.obtainKey();
     final load = image.resolve(const ImageConfiguration());
@@ -84,7 +78,8 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
         Container(
           padding: EdgeInsets.fromLTRB(16.0, 0.0, 0.0, 12.0),
           alignment: Alignment.centerLeft,
-          child: Text('Safety instructions: ', style: TextStyle(fontSize: 20.0)),
+          child:
+              Text('Safety instructions: ', style: TextStyle(fontSize: 20.0)),
         ),
         Container(
           padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
@@ -108,7 +103,16 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
   }
 
   @override
+  void initState() {
+    Future.delayed(Duration.zero, () {
+      fetchMachine();
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    fetchMachine();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal.shade500,
@@ -116,7 +120,7 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
       ),
       drawer: drawerWidget(),
       body: Container(
-        child: informationCard(machinesList.elementAt(2)),
+        child: informationCard(machine),
       ),
       bottomNavigationBar: bottomNavBar(currentIndex: _currentIndex),
     );

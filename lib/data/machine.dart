@@ -12,6 +12,9 @@ class Machine {
       required this.machineId,
       required this.certificateGranted});
 
+  Machine.full(this.machineId, this.machineName, this.workspaceName, this.picture,
+      this.safetyInstructions, this.certificateGranted);
+
   Machine.fromJson(Map<String, dynamic> json) {
     machineId = json['machine_id']['stringValue'];
     machineName = json['name']['stringValue'];
