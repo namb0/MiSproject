@@ -1,8 +1,11 @@
-import 'dart:io';
 
+import 'dart:collection';
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class QRViewExample extends StatefulWidget {
   @override
@@ -14,6 +17,14 @@ class _QRViewExampleState extends State<QRViewExample> {
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   bool scanned = false;
+
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  Future<String> getStudentNumber() async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    var sharedPrefstudentNumber = sharedPreferences.getString('student number');
+    return sharedPrefstudentNumber!;
+  }
 
   // In order to get hot reload to work we need to pause the camera if the platform
   // is android, or resume the camera if the platform is iOS.
@@ -73,13 +84,14 @@ class _QRViewExampleState extends State<QRViewExample> {
     );
   }
 
-  void _onQRViewCreated(QRViewController controller) {
+  void _onQRViewCreated(QRViewController controller) async {
+    String studentNumber = await getStudentNumber();
     setState(() {
       this.controller = controller;
     });
-    controller.scannedDataStream.listen((scanData) {
+    controller.scannedDataStream.listen((scanData) async {
+      await controller.pauseCamera();
       if (scanData.code.toString().contains('workplace')) {
-        controller.pauseCamera();
         int workplaceId = -1, machineId = -1;
         List<String> split = scanData.code.toString().split(' ');
         List<String> splitWorkplace = split[0].split('=');
@@ -93,6 +105,12 @@ class _QRViewExampleState extends State<QRViewExample> {
             'machineId': machineId
           }).then((value) => controller.resumeCamera());
         } else {
+          Map<String, Object> data = new HashMap<String, Object>();
+          data.putIfAbsent('student number', () => studentNumber);
+          data.putIfAbsent('workplace_id', () => workplaceId);
+          data.putIfAbsent('date', () => DateTime.now());
+
+          await firestore.collection('Logs').add(data);
           Navigator.pushNamed(context, '/machines',
                   arguments: {'workplaceId': workplaceId})
               .then((value) => controller.resumeCamera());

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "803081072076",
+    "project_id": "certificate-app-8bce0",
+    "storage_bucket": "certificate-app-8bce0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803081072076:android:4e859876deb4d92619c169",
+        "android_client_info": {
+          "package_name": "com.hnmk.certificate_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "803081072076-2dil4u8rp3bpit5vm3vk7f2d0fg1fn7i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8ewZ4uHlLPlZJ2PqB04PP8hywTlCCD9w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "803081072076-2dil4u8rp3bpit5vm3vk7f2d0fg1fn7i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,8 +6,11 @@ import 'package:certificate_app/pages/machines.dart';
 import 'package:certificate_app/pages/safety_instructions.dart';
 import 'package:certificate_app/pages/certificates.dart';
 import 'package:certificate_app/pages/login.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: '/login',
