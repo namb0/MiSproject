@@ -69,22 +69,22 @@ class ApiRequests {
     );
   }
 
-  Future<Workspace> getMachine(workplaceId, machineId) async {
+  Future<Machine> getMachine(workplaceId, machineId) async {
     var url = Uri.parse(
         'https://firestore.googleapis.com/v1/projects/certificate-app-8bce0/databases/(default)/documents/Workplaces/$workplaceId/Machines/$machineId');
     var response = await get(url);
+    print(url.toString());
 
     if (response.statusCode == 200) {
       var workplace = json.decode(response.body);
-      return Workspace.fromJson(workplace['fields']);
+      return Machine.fromJson(workplace['fields']);
     }
 
-    return Workspace(
-      'N/A',
-      'N/A',
-      'N/A',
-      'N/A',
-    );
+    return Machine(
+        machineId: 'N/A',
+        machineName: 'N/A',
+        workspaceName: 'N/A',
+        certificateGranted: false);
   }
 
   Future getCertificates(id) async {
@@ -99,7 +99,7 @@ class ApiRequests {
       List<dynamic> certificates = map['documents'];
 
       for (var certificate in certificates) {
-        print(certificate['fields']['machine_id']['stringValue']);
+        //print(certificate['fields']['machine_id']['stringValue']);
         certificateList.add(Certificate.fromJson(certificate['fields']));
       }
     }

@@ -24,15 +24,14 @@ class _MachinesState extends State<Machines> {
   Workspace ws = Workspace('', '', '', '');
 
   Future fetchMachines() async {
-    final args = ModalRoute.of(context)!.settings.arguments as Workspace;
-    ws = Workspace(args.id, args.bldInformation, args.workspaceName,
-        args.workspaceResponsible);
-    await ApiRequests().getMachinesList(int.parse(args.id)).then((value) {
+    final args = ModalRoute.of(context)!.settings.arguments as Map;
+    int id = args['workplaceId'];
+    ws = await ApiRequests().getWorkplace(id);
+    await ApiRequests().getMachinesList(id).then((value) {
       setState(() {
         _machines.addAll(value);
       });
     });
-    //ws = await ApiRequests().getWorkspace(int.parse(args.id));
     await ApiRequests().getCertificates(await getStudentNumber()).then((value) {
       setState(() {
         _certificates.addAll(value);
@@ -41,7 +40,7 @@ class _MachinesState extends State<Machines> {
     for (int i = 0; i < _certificates.length; i++) {
       for (int j = 0; j < _machines.length; j++) {
         if (_certificates.elementAt(i).machineId ==
-            _machines.elementAt(j).machineId) {
+            _machines.elementAt(j).certificateId) {
           _machines.elementAt(j).certificateGranted = true;
           _certMachines.add(_machines.elementAt(j));
         }
@@ -159,13 +158,10 @@ class _MachinesState extends State<Machines> {
                 child: const Text('SAFETY INSTRUCTIONS'),
                 onPressed: () {
                   Navigator.pushNamed(context, '/safety_instructions',
-                      arguments: Machine.full(
-                          machine.machineId,
-                          machine.machineName,
-                          ws.workspaceName,
-                          machine.picture,
-                          machine.safetyInstructions,
-                          machine.certificateGranted));
+                      arguments: {
+                        'workplaceId': int.parse(ws.id),
+                        'machineId': int.parse(machine.machineId)
+                      });
                 },
               ),
               const SizedBox(width: 8),

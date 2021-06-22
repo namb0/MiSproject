@@ -57,7 +57,7 @@ class _WorkspacesState extends State<Workspaces> {
                 child: const Text('SHOW MACHINES'),
                 onPressed: () {
                   Navigator.pushNamed(context, '/machines',
-                      arguments: Workspace(workspace.id, workspace.bldInformation, workspace.workspaceName, workspace.workspaceResponsible));
+                      arguments: {'workplaceId': int.parse(workspace.id)});
                 },
               ),
               const SizedBox(width: 8),
