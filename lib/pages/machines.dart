@@ -1,9 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'package:certificate_app/data/certificate.dart';
+import 'package:certificate_app/data/workspace.dart';
+import 'package:certificate_app/helper/api_requests.dart';
 import 'package:flutter/material.dart';
 import 'package:certificate_app/data/machine.dart';
 import 'package:certificate_app/helper/drawer.dart';
 import 'package:certificate_app/helper/bottom_navbar.dart';
 import 'dart:async';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Machines extends StatefulWidget {
   @override
@@ -14,16 +18,56 @@ class _MachinesState extends State<Machines> {
   int _currentIndex = 2;
   bool checkCerts = false;
 
-  List<Machine> machinesList = [
+  List<Machine> _machines = [];
+  List<Certificate> _certificates = [];
+  List<Machine> _certMachines = [];
+  Workspace ws = Workspace('', '', '', '');
+
+  Future fetchMachines() async {
+    final args = ModalRoute.of(context)!.settings.arguments as Workspace;
+    ws = Workspace(args.id, args.bldInformation, args.workspaceName,
+        args.workspaceResponsible);
+    await ApiRequests().getMachinesList(int.parse(args.id)).then((value) {
+      setState(() {
+        _machines.addAll(value);
+      });
+    });
+    //ws = await ApiRequests().getWorkspace(int.parse(args.id));
+    await ApiRequests().getCertificates(await getStudentNumber()).then((value) {
+      setState(() {
+        _certificates.addAll(value);
+      });
+    });
+    for (int i = 0; i < _certificates.length; i++) {
+      for (int j = 0; j < _machines.length; j++) {
+        if (_certificates.elementAt(i).machineId ==
+            _machines.elementAt(j).machineId) {
+          _machines.elementAt(j).certificateGranted = true;
+          _certMachines.add(_machines.elementAt(j));
+        }
+      }
+    }
+  }
+
+  Future<String> getStudentNumber() async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    var sharedPrefstudentNumber = sharedPreferences.getString('student number');
+    return sharedPrefstudentNumber!;
+  }
+
+  /*List<Machine> machinesList = [
     Machine(
+      machineId: '1',
         machineName: 'Drucker',
         workspaceName: 'IT Workspace',
-        certificateGranted: true),
+        certificateGranted: false),
     Machine(
+        machineId: '2',
         machineName: 'C102',
         workspaceName: 'Chemistry Workspace',
-        certificateGranted: true),
+        certificateGranted: false),
     Machine(
+        machineId: '3',
         machineName: 'C103',
         workspaceName: 'Biology Workspace',
         certificateGranted: false),
@@ -31,25 +75,27 @@ class _MachinesState extends State<Machines> {
 
   List<Machine> machinesListCertGranted = [
     Machine(
+        machineId: '1',
         machineName: 'Drucker',
         workspaceName: 'IT Workspace',
-        certificateGranted: true),
+        certificateGranted: false),
     Machine(
+        machineId: '2',
         machineName: 'C102',
         workspaceName: 'Chemistry Workspace',
-        certificateGranted: true),
-  ];
+        certificateGranted: false),
+  ];*/
 
-  Future<Widget> getImage() async {
+  Future<Widget> getImage(Machine machine) async {
     final Completer<Widget> completer = Completer();
-    final url = 'https://picsum.photos/900/600';
+    final url = machine.picture;
     final image = NetworkImage(url);
     // final config = await image.obtainKey();
     final load = image.resolve(const ImageConfiguration());
 
     final listener = new ImageStreamListener((ImageInfo info, isSync) async {
-      print(info.image.width);
-      print(info.image.height);
+      //print(info.image.width);
+      //print(info.image.height);
 
       if (info.image.width == 80 && info.image.height == 160) {
         completer.complete(Container(child: Text('AZAZA')));
@@ -62,20 +108,20 @@ class _MachinesState extends State<Machines> {
     return completer.future;
   }
 
-  Widget machineCard(Machine machine) {
+  Widget machineCard(Machine machine, Workspace ws) {
     return Card(
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           ListTile(
             title: Text(machine.machineName),
-            subtitle: Text(machine.workspaceName),
+            subtitle: Text(ws.workspaceName + ' ' + ws.bldInformation),
           ),
           Container(
             padding: EdgeInsets.all(8.0),
             alignment: Alignment.center,
             child: FutureBuilder<Widget>(
-              future: getImage(),
+              future: getImage(machine),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return snapshot.data!;
@@ -112,8 +158,14 @@ class _MachinesState extends State<Machines> {
               TextButton(
                 child: const Text('SAFETY INSTRUCTIONS'),
                 onPressed: () {
-                  Navigator.pushNamed(
-                      context, '/safety_instructions');
+                  Navigator.pushNamed(context, '/safety_instructions',
+                      arguments: Machine.full(
+                          machine.machineId,
+                          machine.machineName,
+                          ws.workspaceName,
+                          machine.picture,
+                          machine.safetyInstructions,
+                          machine.certificateGranted));
                 },
               ),
               const SizedBox(width: 8),
@@ -122,6 +174,14 @@ class _MachinesState extends State<Machines> {
         ],
       ),
     );
+  }
+
+  @override
+  void initState() {
+    Future.delayed(Duration.zero, () {
+      fetchMachines();
+    });
+    super.initState();
   }
 
   @override
@@ -156,10 +216,10 @@ class _MachinesState extends State<Machines> {
         Expanded(
           child: ListView(
             children: checkCerts
-                ? machinesListCertGranted
-                    .map((machine) => machineCard(machine))
+                ? _certMachines
+                    .map((machine) => machineCard(machine, ws))
                     .toList()
-                : machinesList.map((machine) => machineCard(machine)).toList(),
+                : _machines.map((machine) => machineCard(machine, ws)).toList(),
           ),
         ),
       ]),
