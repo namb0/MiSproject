@@ -3,7 +3,7 @@ import 'package:certificate_app/data/workspace.dart';
 import 'package:certificate_app/helper/drawer.dart';
 import 'package:certificate_app/helper/bottom_navbar.dart';
 import 'package:certificate_app/helper/api_requests.dart';
-import 'package:string_validator/string_validator.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Workspaces extends StatefulWidget {
   @override
@@ -54,7 +54,7 @@ class _WorkspacesState extends State<Workspaces> {
             children: <Widget>[
               const SizedBox(width: 8),
               TextButton(
-                child: const Text('SHOW MACHINES'),
+                child: Text(AppLocalizations.of(context)!.showMachines),
                 onPressed: () {
                   Navigator.pushNamed(context, '/machines',
                       arguments: {'workplaceId': int.parse(workspace.id)});
@@ -79,7 +79,7 @@ class _WorkspacesState extends State<Workspaces> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal.shade500,
-        title: Text('Workspaces'),
+        title: Text(AppLocalizations.of(context)!.workspaces),
       ),
       drawer: drawerWidget(),
       body: ListView(

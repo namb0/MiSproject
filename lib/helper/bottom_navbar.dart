@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class bottomNavBar extends StatelessWidget {
   const bottomNavBar({
@@ -18,10 +19,10 @@ class bottomNavBar extends StatelessWidget {
       selectedItemColor: Colors.white,
       items: [
         BottomNavigationBarItem(
-            icon: Icon(Icons.qr_code_scanner), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
+            icon: Icon(Icons.qr_code_scanner), label: AppLocalizations.of(context)!.home),
+        BottomNavigationBarItem(icon: Icon(Icons.history), label: AppLocalizations.of(context)!.history),
         BottomNavigationBarItem(
-            icon: Icon(Icons.home_work), label: 'Workspaces'),
+            icon: Icon(Icons.home_work), label: AppLocalizations.of(context)!.workspaces),
         /*BottomNavigationBarItem(
             icon: Icon(Icons.edit), label: 'Certificates'),*/
       ],

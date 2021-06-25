@@ -1,0 +1,90 @@
+{
+  "language": "English",
+  "@language": {
+    "description": "The current Language"
+  },
+  "apptitle": "LUCA QR Certification App",
+  "@apptitle": {
+    "description": "App title"
+  },
+  "studentnumber": "Student number (uXXXXXX)",
+  "@apptitle": {
+    "description": "Student number"
+  },
+  "base64code": "Base64 code",
+  "@base64code": {
+    "description": "Base64 code"
+  },
+  "login": "Login",
+  "@login": {
+    "description": "Login button"
+  },
+  "registerHere": "Register here",
+  "@registerHere": {
+    "description": "Register here button"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Home page"
+  },
+  "resultText": "Result: ",
+  "@scanCodeText": {
+    "description": "Scan a code text on the home widget"
+  },
+  "scanCodeText": "Scan a code",
+  "@scanCodeText": {
+    "description": "Scan a code text on the home widget"
+  },
+  "history": "History",
+  "@history": {
+    "description": "History page"
+  },
+  "historyList": "List of recently scanned QR codes",
+  "@historyList": {
+    "description": "Historylist text"
+  },
+  "workspaces": "Workspaces",
+  "@workspaces": {
+    "description": "Workspaces page"
+  },
+  "showMachines": "SHOW MACHINES",
+  "@showMachines": {
+    "description": "Show machines button"
+  },
+  "machines": "Machines",
+  "@machines": {
+    "description": "Machines page"
+  },
+  "showGrantedOnly": "Show machines only with granted certificates: ",
+  "@showGrantedOnly": {
+    "description": "Show machines only with granted certificates"
+  },
+  "certificateGranted": "Certificate granted: ",
+  "@certificateGranted": {
+    "description": "Show if certificate is granted or not"
+  },
+  "showSafetyInstructions": "SAFETY INSTRUCTIONS",
+  "@showSafetyInstructions": {
+    "description": "Show safety instructions button"
+  },
+  "machineInformation": "Machine Information",
+  "@machineInformation": {
+    "description": "Safety Instruction page"
+  },
+  "safetyInstructions": "Safety instructions: ",
+  "@safetyInstructions": {
+    "description": "Show the text safety instructions"
+  },
+  "drawerSettings": "Settings",
+  "@drawerSettings": {
+    "description": "Drawer Settings"
+  },
+  "drawerSignOut": "Sign Out",
+  "@drawerSignOut": {
+    "description": "Drawer Sign Out"
+  },
+  "loading": "Loading...",
+  "@loading": {
+    "description": "Loading placeholder text"
+  }
+}

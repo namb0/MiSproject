@@ -3,6 +3,7 @@ import 'package:certificate_app/data/login.dart';
 import 'package:certificate_app/pages/home.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -50,7 +51,7 @@ class _LoginState extends State<Login> {
                       child: Padding(
                         padding: EdgeInsets.only(bottom: 40, top: 100),
                         child: Text(
-                          'Luca QR Certification App',
+                          AppLocalizations.of(context)!.apptitle,
                           style: TextStyle(
                             fontStyle: FontStyle.italic,
                             color: Colors.teal.shade500,
@@ -68,7 +69,7 @@ class _LoginState extends State<Login> {
                         controller: usercontroller,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'User number (uXXXXXX)',
+                          labelText: AppLocalizations.of(context)!.studentnumber,
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(4)),
                             borderSide: BorderSide(
@@ -85,7 +86,7 @@ class _LoginState extends State<Login> {
                         obscureText: true,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Base64 code',
+                          labelText: AppLocalizations.of(context)!.base64code,
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(4)),
                             borderSide: BorderSide(
@@ -100,7 +101,7 @@ class _LoginState extends State<Login> {
                           padding:
                               EdgeInsets.symmetric(horizontal: 50, vertical: 8),
                           child: ElevatedButton(
-                            child: Text('Login'),
+                            child: Text(AppLocalizations.of(context)!.login),
                             onPressed: () {
                               login(usercontroller.text, pwcontroller.text);
                             },
@@ -122,12 +123,12 @@ class _LoginState extends State<Login> {
                         ),
                         Padding(
                           padding:
-                              EdgeInsets.symmetric(horizontal: 50, vertical: 8),
+                              EdgeInsets.symmetric(horizontal: 25, vertical: 8),
                           child: TextButton(
                             onPressed: () {
                               openBrowserTab(toLaunch);
                             },
-                            child: Text('Register here'),
+                            child: Text(AppLocalizations.of(context)!.registerHere),
                             style: TextButton.styleFrom(
                                 primary: Colors.teal.shade500),
                           ),
