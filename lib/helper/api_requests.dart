@@ -2,9 +2,11 @@ import 'dart:convert';
 import 'package:certificate_app/data/certificate.dart';
 import 'package:certificate_app/data/machine.dart';
 import 'package:certificate_app/data/workspace.dart';
+import 'package:certificate_app/data/history.dart';
 import 'package:http/http.dart';
 
 class ApiRequests {
+
   Future getWorkplacesList() async {
     var url = Uri.parse(
         'https://firestore.googleapis.com/v1/projects/certificate-app-8bce0/databases/(default)/documents/Workplaces');
@@ -105,4 +107,24 @@ class ApiRequests {
     }
     return certificateList;
   }
+
+  Future getHistory(id) async { // link noch anpassen, denke ansonsten fresh oder
+    var url = Uri.parse(
+        'https://firestore.googleapis.com/v1/projects/certificate-app-8bce0/databases/(default)/documents/User/$id/Certificates');
+    var response = await get(url);
+
+    List<Historydata> historyList = [];
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> map = json.decode(response.body);
+      List<dynamic> logdata = map['documents'];
+
+      for (var log in logdata) {
+        /*print(log['fields']['machine_id']['stringValue']);*/
+        historyList.add(Historydata.fromJson(log['fields']));
+      }
+    }
+    return historyList;
+  }
+
 }

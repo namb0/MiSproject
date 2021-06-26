@@ -86,10 +86,25 @@ class _QRViewExampleState extends State<QRViewExample> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
+
+        qr_extract(result!);
+
       });
     });
   }
 
+  void qr_extract(Barcode result)
+  {
+   int length = result.code.toString().length;
+   String erg = result.code.toString(), workplace ='',machine='';
+   int i =0;
+   for(;length>i && erg[i] !=' ';i++)
+     workplace += erg[i];
+
+   for(;length>i && erg[i] !='';i++)
+     machine += erg[i];
+
+}
   @override
   void dispose() {
     controller?.dispose();
