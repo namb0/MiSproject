@@ -42,11 +42,12 @@ To use the app, configure an emulated device or connect your Android phone to th
 | **History**     |             |              
 | <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/123548739-5ce3c880-d766-11eb-8a0c-7b870a9964de.png"> | A view of Workplaces the user recently scanned  |
 | **Workspaces**  |             |
-| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654364-1af5c980-d14b-11eb-97bc-a382280c2ee6.png"> | A list of all Workplaces with the option to see all Machines which are used in them |
+| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/123548799-9583a200-d766-11eb-9b74-a07e87077886.png"> | A list of all Workplaces with the option to see all Machines which are used in them |
 | **Machines**    |             |
-| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654370-29dc7c00-d14b-11eb-93e6-7e92e8e43ae9.png"> | A list of Machines which are avaliable in a specific Workplace. The User is also able to filter the list of machines which he/she has a granted Certificate for. Every Machine has safetyinstruction which the user can view by pressing "Safety Instructions" |
+| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/123548831-b0eead00-d766-11eb-84f7-ff5004e770f3.png"> | A list of Machines which are avaliable in a specific Workplace. The User is also able to filter the list of machines which he/she has a granted Certificate for. Every Machine has safetyinstruction which the user can view by pressing "Safety Instructions" |
 | **Sidebar**     |             |
 | <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654381-34971100-d14b-11eb-849f-dd5606f6200b.png"> | The Sidebar is accessible by pressing the icon on the top left. There you can see your username and r-number. Below are options for settings and a logout |
-
+| **Safety Instructions**     |             |
+| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/123548870-e98e8680-d766-11eb-915f-8cbaf75bcd0f.png"> | The Safety Instructions are machine specific and show name, workspace, granted certificate and a picture or instructions for safe use of the machine. |
 
 
