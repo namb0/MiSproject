@@ -1,6 +1,6 @@
-# **Scanni**
+# **Luca QR Certificate App**
 
-The Scanni app is to be used by students from LUCA School of Arts and the persons 
+The LUCA QR app is to be used by students from LUCA School of Arts and the persons 
 responsible for the workplaces in the school.
 
 In the workplaces students can use different machines while working on their projects. 
@@ -12,10 +12,12 @@ To prove that a student has the required knowledge to use a certain machine of
 equipment, he/she receives a certificate. These certificates will be provided digitally only. The 
 app will allow to check that the student has the certificate.
 
+LUCA QR is supported in english and german.
+
 # **Installation**:  
 
-To Install Scanni you can download the repository, open it with an IDE such as android studio and start the main.dart file.  
-To use the app, configure a emulated device or connect your Android phone to the pc. 
+To Install LUCA QR you can download the repository, open it with an IDE such as android studio and start the main.dart file.  
+To use the app, configure an emulated device or connect your Android phone to the pc.
 
 *Required Plugins*: 
 - Flutter  
@@ -23,10 +25,12 @@ To use the app, configure a emulated device or connect your Android phone to the
 
 # Important Files and Folders  
 
-**lib**:    Main folder which includes most of the app.    
-**data**:   Includes most of the logic and data used in the pages.  
-**helper**: Includes helping functions such as qr scanner and navbar.  
-**pages**:  Includes all the pages shown when using the application.  
+**lib**:          Main folder which includes most of the app.    
+**assets.image**: Includes the splash art for our app icon and splash screen.
+**data**:         Includes the data models used for storing information from the JSON objects returned by the API calls.  
+**helper**:       Includes exported widgets such as qr scanner and reusable widgets such as bottom navigation bar, drawer.  
+**l10n**:         Includes template files needed for internationalization.
+**pages**:        Includes all the pages shown when using the application.  
 
 # Using the app
 
@@ -36,7 +40,7 @@ To use the app, configure a emulated device or connect your Android phone to the
 | **Home Screen** |             |
 | <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654357-fe599180-d14a-11eb-9b0f-ce10df15051e.png"> | On the Homescreen the user is instantly able to scan a QR code or use the navbar on the bottom to direct to another page |
 | **History**     |             |              
-| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654363-103b3480-d14b-11eb-8c05-3fb9fa1ba8b0.png"> | A view of Workplaces and Machines the user recently scanned  |
+| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654363-103b3480-d14b-11eb-8c05-3fb9fa1ba8b0.png"> | A view of Workplaces the user recently scanned  |
 | **Workspaces**  |             |
 | <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654364-1af5c980-d14b-11eb-97bc-a382280c2ee6.png"> | A list of all Workplaces with the option to see all Machines which are used in them |
 | **Machines**    |             |
