@@ -69,7 +69,8 @@ class _LoginState extends State<Login> {
                         controller: usercontroller,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: AppLocalizations.of(context)!.studentnumber,
+                          labelText:
+                              AppLocalizations.of(context)!.studentnumber,
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(4)),
                             borderSide: BorderSide(
@@ -128,7 +129,8 @@ class _LoginState extends State<Login> {
                             onPressed: () {
                               openBrowserTab(toLaunch);
                             },
-                            child: Text(AppLocalizations.of(context)!.registerHere),
+                            child: Text(
+                                AppLocalizations.of(context)!.registerHere),
                             style: TextButton.styleFrom(
                                 primary: Colors.teal.shade500),
                           ),

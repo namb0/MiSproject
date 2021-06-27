@@ -8,7 +8,6 @@ import 'package:certificate_app/helper/drawer.dart';
 import 'package:certificate_app/helper/bottom_navbar.dart';
 import 'dart:async';
 
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SafetyInstructions extends StatefulWidget {
@@ -20,7 +19,7 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
   int _currentIndex = 2;
   List<Certificate> _certificates = [];
   Workspace ws = Workspace('', '', '', '');
-  Machine machine = Machine.full('','', '', '', '', '', false);
+  Machine machine = Machine.full('', '', '', '', '', '', false);
 
   Future fetchMachine() async {
     final args = ModalRoute.of(context)!.settings.arguments as Map;
@@ -28,7 +27,9 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
     int machineId = args['machineId'];
     ws = await ApiRequests().getWorkplace(workplaceId);
     machine = await ApiRequests().getMachine(workplaceId, machineId);
-    await ApiRequests().getCertificates(await getStudentNumber()).then((value) {
+    await ApiRequests()
+        .getCertificates(await ApiRequests().getStudentNumber())
+        .then((value) {
       setState(() {
         _certificates.addAll(value);
       });
@@ -38,12 +39,6 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
         machine.certificateGranted = true;
       }
     }
-  }
-
-  Future<String> getStudentNumber() async {
-    final sharedPreferences = await SharedPreferences.getInstance();
-    var sharedPrefstudentNumber = sharedPreferences.getString('student number');
-    return sharedPrefstudentNumber!;
   }
 
   Future<Widget> getImage() async {
@@ -99,8 +94,8 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
         Container(
           padding: EdgeInsets.fromLTRB(16.0, 0.0, 0.0, 12.0),
           alignment: Alignment.centerLeft,
-          child:
-              Text(AppLocalizations.of(context)!.safetyInstructions, style: TextStyle(fontSize: 20.0)),
+          child: Text(AppLocalizations.of(context)!.safetyInstructions,
+              style: TextStyle(fontSize: 20.0)),
         ),
         Container(
           padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
