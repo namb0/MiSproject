@@ -26,10 +26,10 @@ To use the app, configure an emulated device or connect your Android phone to th
 # Important Files and Folders  
 
 **lib**:          Main folder which includes most of the app.    
-**assets.image**: Includes the splash art for our app icon and splash screen.
+**assets.image**: Includes the splash art for our app icon and splash screen.  
 **data**:         Includes the data models used for storing information from the JSON objects returned by the API calls.  
 **helper**:       Includes exported widgets such as qr scanner and reusable widgets such as bottom navigation bar, drawer.  
-**l10n**:         Includes template files needed for internationalization.
+**l10n**:         Includes template files needed for internationalization.  
 **pages**:        Includes all the pages shown when using the application.  
 
 # Using the app
