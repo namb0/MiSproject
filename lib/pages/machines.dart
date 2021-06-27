@@ -7,7 +7,6 @@ import 'package:certificate_app/helper/drawer.dart';
 import 'package:certificate_app/helper/bottom_navbar.dart';
 import 'dart:async';
 
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Machines extends StatefulWidget {
@@ -33,7 +32,9 @@ class _MachinesState extends State<Machines> {
         _machines.addAll(value);
       });
     });
-    await ApiRequests().getCertificates(await getStudentNumber()).then((value) {
+    await ApiRequests()
+        .getCertificates(await ApiRequests().getStudentNumber())
+        .then((value) {
       setState(() {
         _certificates.addAll(value);
       });
@@ -47,12 +48,6 @@ class _MachinesState extends State<Machines> {
         }
       }
     }
-  }
-
-  Future<String> getStudentNumber() async {
-    final sharedPreferences = await SharedPreferences.getInstance();
-    var sharedPrefstudentNumber = sharedPreferences.getString('student number');
-    return sharedPrefstudentNumber!;
   }
 
   /*List<Machine> machinesList = [
@@ -156,7 +151,8 @@ class _MachinesState extends State<Machines> {
             children: <Widget>[
               const SizedBox(width: 8),
               TextButton(
-                child: Text(AppLocalizations.of(context)!.showSafetyInstructions),
+                child:
+                    Text(AppLocalizations.of(context)!.showSafetyInstructions),
                 onPressed: () {
                   Navigator.pushNamed(context, '/safety_instructions',
                       arguments: {

@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'package:certificate_app/data/certificate.dart';
+import 'package:certificate_app/data/logs.dart';
 import 'package:certificate_app/data/machine.dart';
 import 'package:certificate_app/data/workspace.dart';
 import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiRequests {
   Future getWorkplacesList() async {
@@ -104,5 +106,29 @@ class ApiRequests {
       }
     }
     return certificateList;
+  }
+
+  Future getLogs() async {
+    var url = Uri.parse(
+        'https://firestore.googleapis.com/v1/projects/certificate-app-8bce0/databases/(default)/documents/Logs');
+    var response = await get(url);
+
+    List<Logs> logList = [];
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> map = json.decode(response.body);
+      List<dynamic> logs = map['documents'];
+
+      for (var log in logs) {
+        logList.add(Logs.fromJson(log['fields']));
+      }
+    }
+    return logList;
+  }
+
+  Future<String> getStudentNumber() async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    var sharedPrefstudentNumber = sharedPreferences.getString('student number');
+    return sharedPrefstudentNumber!;
   }
 }
