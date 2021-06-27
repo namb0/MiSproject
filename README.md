@@ -40,7 +40,7 @@ To use the app, configure an emulated device or connect your Android phone to th
 | **Home Screen** |             |
 | <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654357-fe599180-d14a-11eb-9b0f-ce10df15051e.png"> | On the Homescreen the user is instantly able to scan a QR code or use the navbar on the bottom to direct to another page |
 | **History**     |             |              
-| <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654363-103b3480-d14b-11eb-8c05-3fb9fa1ba8b0.png"> | A view of Workplaces the user recently scanned  |
+| <img width ="320" heigth="640" align="left" src="![grafik](https://user-images.githubusercontent.com/70316076/123548739-5ce3c880-d766-11eb-8a0c-7b870a9964de.png)"> | A view of Workplaces the user recently scanned  |
 | **Workspaces**  |             |
 | <img width ="320" heigth="640" align="left" src="https://user-images.githubusercontent.com/70316076/122654364-1af5c980-d14b-11eb-97bc-a382280c2ee6.png"> | A list of all Workplaces with the option to see all Machines which are used in them |
 | **Machines**    |             |
