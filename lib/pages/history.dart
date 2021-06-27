@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:certificate_app/helper/drawer.dart';
 import 'package:certificate_app/helper/bottom_navbar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class History extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _HistoryState extends State<History> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal.shade500,
-        title: Text('History'),
+        title: Text(AppLocalizations.of(context)!.history),
       ),
       drawer: drawerWidget(),
       body: Container(
@@ -23,7 +24,7 @@ class _HistoryState extends State<History> {
         child: Column(
           children: [
             Text(
-              'List of recently scanned QR codes',
+              AppLocalizations.of(context)!.historyList,
               style: TextStyle(fontSize: 16.0),
             ),
           ],

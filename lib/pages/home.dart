@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:certificate_app/helper/drawer.dart';
 import 'package:certificate_app/helper/bottom_navbar.dart';
 import 'package:certificate_app/helper/qr_scanner.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal.shade500,
-        title: Text('Home'),
+        title: Text(AppLocalizations.of(context)!.home),
       ),
       drawer: drawerWidget(),
       body: QRViewExample(),

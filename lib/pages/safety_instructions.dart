@@ -9,6 +9,7 @@ import 'package:certificate_app/helper/bottom_navbar.dart';
 import 'dart:async';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SafetyInstructions extends StatefulWidget {
   @override
@@ -83,7 +84,7 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "Certificate granted: ",
+                  text: AppLocalizations.of(context)!.certificateGranted,
                   style: TextStyle(color: Colors.black, fontSize: 16.0),
                 ),
                 WidgetSpan(
@@ -99,7 +100,7 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
           padding: EdgeInsets.fromLTRB(16.0, 0.0, 0.0, 12.0),
           alignment: Alignment.centerLeft,
           child:
-              Text('Safety instructions: ', style: TextStyle(fontSize: 20.0)),
+              Text(AppLocalizations.of(context)!.safetyInstructions, style: TextStyle(fontSize: 20.0)),
         ),
         Container(
           padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
@@ -112,7 +113,7 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
                 if (snapshot.hasData) {
                   return snapshot.data!;
                 } else {
-                  return Text('LOADING...');
+                  return Text(AppLocalizations.of(context)!.loading);
                 }
               },
             ),
@@ -135,7 +136,7 @@ class _SafetyInstructionsState extends State<SafetyInstructions> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal.shade500,
-        title: Text('Machine Information'),
+        title: Text(AppLocalizations.of(context)!.machineInformation),
       ),
       drawer: drawerWidget(),
       body: Container(

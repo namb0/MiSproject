@@ -1,4 +1,3 @@
-
 import 'dart:collection';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
@@ -6,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QRViewExample extends StatefulWidget {
   @override
@@ -51,10 +51,9 @@ class _QRViewExampleState extends State<QRViewExample> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   if (result != null)
-                    Text(
-                        'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
+                    Text(AppLocalizations.of(context)!.resultText + result!.code)
                   else
-                    Text('Scan a code'),
+                    Text(AppLocalizations.of(context)!.scanCodeText),
                 ],
               ),
             ),

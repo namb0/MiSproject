@@ -8,6 +8,7 @@ import 'package:certificate_app/helper/bottom_navbar.dart';
 import 'dart:async';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Machines extends StatefulWidget {
   @override
@@ -125,7 +126,7 @@ class _MachinesState extends State<Machines> {
                 if (snapshot.hasData) {
                   return snapshot.data!;
                 } else {
-                  return Text('LOADING...');
+                  return Text(AppLocalizations.of(context)!.loading);
                 }
               },
             ),
@@ -138,7 +139,7 @@ class _MachinesState extends State<Machines> {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: "Certificate granted: ",
+                    text: AppLocalizations.of(context)!.certificateGranted,
                     style: TextStyle(color: Colors.black, fontSize: 16.0),
                   ),
                   WidgetSpan(
@@ -155,7 +156,7 @@ class _MachinesState extends State<Machines> {
             children: <Widget>[
               const SizedBox(width: 8),
               TextButton(
-                child: const Text('SAFETY INSTRUCTIONS'),
+                child: Text(AppLocalizations.of(context)!.showSafetyInstructions),
                 onPressed: () {
                   Navigator.pushNamed(context, '/safety_instructions',
                       arguments: {
@@ -185,7 +186,7 @@ class _MachinesState extends State<Machines> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal.shade500,
-        title: Text('Machines'),
+        title: Text(AppLocalizations.of(context)!.machines),
       ),
       drawer: drawerWidget(),
       body: Column(children: [
@@ -194,7 +195,7 @@ class _MachinesState extends State<Machines> {
           child: Row(
             children: [
               Text(
-                'Show only granted certificates: ',
+                AppLocalizations.of(context)!.showGrantedOnly,
                 style: TextStyle(),
               ),
               Checkbox(

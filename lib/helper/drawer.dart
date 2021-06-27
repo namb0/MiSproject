@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class drawerWidget extends StatelessWidget {
   drawerWidget({
@@ -37,7 +38,7 @@ class drawerWidget extends StatelessWidget {
                   );
                 } else {
                   return UserAccountsDrawerHeader(
-                    accountName: Text('Loading...'),
+                    accountName: Text(AppLocalizations.of(context)!.loading),
                     accountEmail: Text(''),
                     decoration: BoxDecoration(
                       color: Colors.teal.shade500,
@@ -49,11 +50,11 @@ class drawerWidget extends StatelessWidget {
             children: <Widget>[
               ListTile(
                 leading: Icon(Icons.settings),
-                title: Text('Settings'),
+                title: Text(AppLocalizations.of(context)!.drawerSettings),
               ),
               ListTile(
                 leading: Icon(Icons.logout),
-                title: Text('Sign Out'),
+                title: Text(AppLocalizations.of(context)!.drawerSignOut),
                 onTap: () async {
                   final sharedPreferences =
                       await SharedPreferences.getInstance();
